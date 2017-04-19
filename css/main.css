@@ -1,0 +1,22 @@
+#add,
+#del,
+#done,
+#todo,
+#all,
+#delete {
+    margin-top: 10px;
+}
+
+
+/*js和css要解耦*/
+
+
+/*对完成和未完成的事件进行适配样式*/
+
+.eventDone {
+    text-decoration: line-through;
+}
+
+.eventTodo {
+    text-decoration: "";
+}
