@@ -19,3 +19,20 @@ function clearInput() {
     var inputComment = document.getElementById('item');
     inputComment.value = "";
 }
+
+//添加回到顶部的按钮
+
+window.onscroll = function() { scrollFunction() };
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("Top").style.display = "block";
+    } else {
+        document.getElementById("Top").style.display = "none";
+    }
+};
+
+document.getElementById("Top").addEventListener("click", function() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}, false);

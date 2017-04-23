@@ -1,22 +1,38 @@
-#add,
-#del,
-#done,
-#todo,
-#all,
-#delete {
-    margin-top: 10px;
-}
-
-
-/*js和css要解耦*/
-
-
-/*对完成和未完成的事件进行适配样式*/
-
-.eventDone {
-    text-decoration: line-through;
-}
-
-.eventTodo {
-    text-decoration: "";
-}
+    #add,
+    #del,
+    #done,
+    #todo,
+    #all,
+    #delete {
+        margin-top: 10px;
+    }
+    /*给回到顶部的按钮添加样式*/
+    
+    #Top {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 40px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    #Top:hover {
+        background-color: #555;
+    }
+    /*js和css要解耦*/
+    /*对完成和未完成的事件进行适配样式*/
+    
+    .eventDone {
+        text-decoration: line-through;
+    }
+    
+    .eventTodo {
+        text-decoration: "";
+    }
