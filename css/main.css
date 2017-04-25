@@ -26,6 +26,11 @@
     #Top:hover {
         background-color: #555;
     }
+    /*添加一个功能条TODO*/
+    
+    .strip {
+        background-color: blueviolet;
+    }
     /*js和css要解耦*/
     /*对完成和未完成的事件进行适配样式*/
     
@@ -35,4 +40,17 @@
     
     .eventTodo {
         text-decoration: "";
+    }
+    /*删除按钮*/
+    
+    .panelDel {
+        font-size: 14px;
+        margin-left: 10px;
+        box-shadow: none;
+        border: 0px solid #dddddd;
+        background-color: transparent;
+    }
+    
+    .panelDel:hover {
+        background-color: yellow;
     }

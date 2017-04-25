@@ -16,8 +16,8 @@ function addData(data) {
 
 
 
-//TODO:删除数据
-function delData() {
+//TODO:删除所有数据
+function delAllData() {
     var transaction = request.result.transaction(["user"], "readwrite"),
         storeHander = transaction.objectStore('user');
     var range = IDBKeyRange.lowerBound(0, true);
@@ -35,5 +35,17 @@ function delData() {
             cursor.continue();
         } else {}
     };
+}
 
+function delPanel(id) {
+    var transaction = request.result.transaction(["user"], "readwrite"),
+        storeHander = transaction.objectStore('user');
+
+    //TODO:删除操作未成功
+    storeHander.get(id).onsuccess = function(e) {
+        console.log(e.target);
+    }
+    storeHander.delete(id).onsuccess = function(e) {
+        console.log("del success");
+    }
 }

@@ -41,8 +41,23 @@ function refreshNode(user_object) {
     panel.appendChild(panel_head);
     panel.appendChild(panel_body);
 
+    //添加了一个删除按钮
+    var delBtn = document.createElement("button");
+    delBtn.classList.add("btn-sm");
+    delBtn.classList.add("panelDel");
+    var btn = document.createTextNode("delete");
+    delBtn.appendChild(btn);
+    panel_head.appendChild(delBtn);
+    //给数据添加ID,方便查找与定义
+    delBtn.setAttribute("data-btnId", user_object.id);
+    delBtn.addEventListener("click", function(e) {
+        console.log(e.target);
+        var btnId = e.target.getAttribute("data-btnId");
+        delPanel(btnId);
+    }, false);
+
     //添加点击事件
-    panel.addEventListener('click', function() {
+    panel_body.addEventListener('click', function() {
         user_object.finished = !user_object.finished;
         //完成的情况
         if (user_object.finished) {
@@ -72,21 +87,6 @@ function refreshNode(user_object) {
 
     }, false);
 }
-
-//删除单个pannel，但是获取不到对应的节点，为了方便调试，我让他立即执行了
-(function delPanel() {
-    var panelParent = document.getElementById("showData");
-    var Panels = document.getElementsByClassName("panel");
-    console.log(Panels); //数组，但是数组边上有个感叹号，提示内容为values below was evaluated just now（不知道是不是这个原因）
-    console.log(Panels[0]); //undefine
-
-    console.log(panelParent.firstChild); //内容为空
-    console.dir(panelParent.childNodes[0]);
-    for (var i = 0; i < panelParent.length; i++)(function(num) {
-        //TODO
-    })(i);
-})();
-
 
 //清除TODO显示面板上所有的节点
 function clearAllNodes() {

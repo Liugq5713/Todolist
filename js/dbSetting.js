@@ -23,7 +23,7 @@ var cfg = {
         document.getElementById('done').addEventListener('click', function() { showDataDone() }, false);
         document.getElementById('todo').addEventListener('click', function() { showDataTodo() }, false);
         document.getElementById('all').addEventListener('click', function() { showData() }, false);
-        document.getElementById('delete').addEventListener('click', function() { delData() }, false);
+        document.getElementById('delete').addEventListener('click', function() { delAllData() }, false);
     };
 
     request.onupgradeneeded = function(e) {
