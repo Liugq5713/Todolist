@@ -51,9 +51,10 @@ function refreshNode(user_object) {
     //给数据添加ID,方便查找与定义
     delBtn.setAttribute("data-btnId", user_object.id);
     delBtn.addEventListener("click", function(e) {
-        console.log(e.target);
+        //btnid不是一个数字，是string
         var btnId = e.target.getAttribute("data-btnId");
         delPanel(btnId);
+        showData();
     }, false);
 
     //添加点击事件

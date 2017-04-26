@@ -29,7 +29,10 @@
     /*添加一个功能条TODO*/
     
     .strip {
-        background-color: blueviolet;
+        background-color: #eeeeee;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
     }
     /*js和css要解耦*/
     /*对完成和未完成的事件进行适配样式*/

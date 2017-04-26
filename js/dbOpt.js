@@ -36,16 +36,16 @@ function delAllData() {
         } else {}
     };
 }
-
-function delPanel(id) {
-    var transaction = request.result.transaction(["user"], "readwrite"),
+//这边我以为我传入的是一个数字，但是其实不是的，是一个string，需要类型转化
+function delPanel(keyPath) {
+    console.log(db);
+    var transaction = db.transaction("user", "readwrite"),
         storeHander = transaction.objectStore('user');
+    console.log(typeof(keyPath));
 
-    //TODO:删除操作未成功
-    storeHander.get(id).onsuccess = function(e) {
-        console.log(e.target);
-    }
-    storeHander.delete(id).onsuccess = function(e) {
+    //TODO:删除操作,需要检验一下键的类型
+
+    storeHander.delete(Number(keyPath)).onsuccess = function(e) {
         console.log("del success");
     }
 }
