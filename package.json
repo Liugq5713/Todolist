@@ -1,0 +1,24 @@
+{
+  "name": "npm-script-todolist",
+  "version": "1.0.0",
+  "description": "todolist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uglify": "uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liugq5713/Todolist.git"
+  },
+  "author": "lgq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liugq5713/Todolist/issues"
+  },
+  "homepage": "https://github.com/Liugq5713/Todolist#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "uglify-js": "^2.8.22"
+  }
+}
