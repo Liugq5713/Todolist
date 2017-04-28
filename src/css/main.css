@@ -34,26 +34,33 @@
         padding-bottom: 10px;
         margin-bottom: 10px;
     }
-    /*js和css要解耦*/
-    /*对完成和未完成的事件进行适配样式*/
+    /*给功能条上的按钮添加样式*/
     
-    .eventDone {
-        text-decoration: line-through;
-    }
-    
-    .eventTodo {
-        text-decoration: "";
-    }
-    /*删除按钮*/
-    
-    .panelDel {
-        font-size: 14px;
+    .strip .btn-userdefine {
+        border-radius: 5px;
         margin-left: 10px;
-        box-shadow: none;
-        border: 0px solid #dddddd;
-        background-color: transparent;
+        width: 100px;
+        height: 30px;
+        background-color: #E2E5EC;
+        border: 1px solid #8E98A9;
+        box-shadow: inset 0px 0px 1px rgba(160, 170, 184, 1);
+        background-image: linear-gradient(90deg, rgb(214, 219, 223) 0%, rgb(244, 244, 248) 100%);
+        color: #444D59;
+        text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
     }
     
-    .panelDel:hover {
-        background-color: yellow;
+    .strip .btn-userdefine:hover {
+        background-color: #EAEAF0;
+        background-image: linear-gradient(90deg, rgb(229, 235, 240) 0%, rgb(249, 248, 255) 100%);
+    }
+    /*给功能条上的select添加样式*/
+    
+    .strip .select-style {
+        border-radius: 5px;
+        background: transparent;
+        width: 120px;
+        padding: 5px;
+        font-size: 16px;
+        height: 34px;
+        margin-top: 10px;
     }

@@ -3,8 +3,6 @@ window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || 
 window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 window.IDBCursor = window.IDBCursor || window || window.webkitIDBCursor || window.msIDBCursor;
 
-
-
 var cfg = {
     dbname: "todolist",
     dbVersion: '1',
@@ -20,9 +18,24 @@ var cfg = {
         db = e.target.result;
         showData();
         user_id = getId();
-        document.getElementById('done').addEventListener('click', function() { showDataDone() }, false);
-        document.getElementById('todo').addEventListener('click', function() { showDataTodo() }, false);
-        document.getElementById('all').addEventListener('click', function() { showData() }, false);
+        var todoShowSelect = document.querySelector('#todoShowWay');
+        console.log(todoShowSelect);
+        todoShowSelect.addEventListener('change', function(e) {
+            switch (todoShowSelect.value) {
+                case "showDataDone":
+                    showDataDone();
+                    break;
+                case "showDataTodo":
+                    showDataTodo();
+                    break;
+                case "showData":
+                    showData();
+                    break;
+                default:
+                    showData();
+                    break;
+            }
+        }, false);
         document.getElementById('delete').addEventListener('click', function() { delAllData() }, false);
     };
 

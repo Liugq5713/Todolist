@@ -3,25 +3,33 @@
 
 <head>
 
-    <title>TODO</title>
+    <title>Todolist</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="src/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/css/main.css">
+    <link rel="shortcut icon" href="./src/img/todo.ico">
+    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/js-control.css">
+
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h2>TODO LIST</h2>
+            <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
             <button id="add" onclick="addList()" class="btn btn-success ">添加事项</button>
 
         </div>
         <div class="row  strip">
-            <button id="done" class="btn btn-primary ">已完成</button>
-            <button id="todo" class="btn btn-primary ">未完成</button>
-            <button id="all" class="btn btn-primary ">显示所有</button>
-            <button id="delete" class="btn btn-primary ">删除所有事件</button>
+            <select id="todoShowWay" class="select-style">
+                <option value="showData">显示所有</option>
+                
+                <option value="showDataDone">已完成</option>
+                <option value="showDataTodo">未完成</option>
+               
+            </select>
+
+            <button id="delete" class=" btn-userdefine">删除所有事件</button>
         </div>
         <!--动态添加TODO的数据-->
         <div class="row" id="showData">
@@ -29,7 +37,12 @@
         </div>
         <button id="Top" title="go to the top">TOP</button>
     </div>
-    <script src="./dist/js/app.min.js"></script>
+    <script src="./src/js/add-todolist.js"></script>
+    <script src="./src/js/db-opt.js"></script>
+    <script src="./src/js/db-setting.js"></script>
+    <script src="./src/js/db-show.js"></script>
+    <script src="./src/js/node-update.js"></script>
+    <script src="./src/js/user-experience.js"></script>
 </body>
 
 </html>
