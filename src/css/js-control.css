@@ -11,13 +11,17 @@
   /*删除按钮*/
   
   .panelDel {
-      font-size: 14px;
+      background-color: #80AFCC;
+      border-radius: 2px;
+      border: 0px solid #3082AB;
       margin-left: 10px;
-      box-shadow: none;
-      border: 0px solid #dddddd;
-      background-color: transparent;
+      box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1);
+      background-image: linear-gradient(90deg, rgb(190, 207, 216) 0%, rgb(174, 217, 241) 100%);
+      color: #135E83;
+      text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
   }
   
   .panelDel:hover {
-      background-color: yellow;
+      background-color: #AED1E7;
+      background-image: linear-gradient(90deg, rgb(152, 193, 216) 0%, rgb(193, 222, 239) 100%);
   }

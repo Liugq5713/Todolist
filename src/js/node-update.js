@@ -43,7 +43,7 @@ function refreshNode(user_object) {
 
     //添加了一个删除按钮
     var delBtn = document.createElement("button");
-    delBtn.classList.add("btn-sm");
+    // delBtn.classList.add("btn-sm");
     delBtn.classList.add("panelDel");
     var btn = document.createTextNode("delete");
     delBtn.appendChild(btn);
