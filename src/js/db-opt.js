@@ -49,3 +49,17 @@ function delPanel(keyPath) {
         console.log("del success");
     }
 }
+
+//增加TODO事件后，同步时间到数据库
+function addTodoEventDB(user_object) {
+    //把数据同步到数据库
+    var transaction = db.transaction(["user"], "readwrite"),
+        storeHander = transaction.objectStore('user');
+    user_object.finished = user_object.finished;
+    console.log(user_object);
+    //因为ID是自动增长的，所以使用put会给他增加数据，而不是修改数据
+    storeHander.put(user_object).onsuccess = function(e) {
+        console.log("修改数据成功");
+    };
+
+}

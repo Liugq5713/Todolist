@@ -19,7 +19,6 @@ var cfg = {
         showData();
         user_id = getId();
         var todoShowSelect = document.querySelector('#todoShowWay');
-        console.log(todoShowSelect);
         todoShowSelect.addEventListener('change', function(e) {
             switch (todoShowSelect.value) {
                 case "showDataDone":

@@ -20,7 +20,8 @@ var setEvent = function() {
         id: user_id,
         user_event: item,
         finished: false,
-        user_date: date
+        user_date: date,
+        srarted: false
     }
     console.log(arrangement);
     return arrangement;

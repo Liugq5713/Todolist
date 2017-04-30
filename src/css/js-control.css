@@ -25,3 +25,20 @@
       background-color: #AED1E7;
       background-image: linear-gradient(90deg, rgb(152, 193, 216) 0%, rgb(193, 222, 239) 100%);
   }
+  /*开始暂停按钮*/
+  
+  .start-img {
+      width: 20px;
+      height: 23px;
+      margin-left: 10px;
+      position: relative;
+      top: 5px;
+  }
+  
+  .pause-img {
+      width: 20px;
+      height: 23px;
+      margin-left: 10px;
+      position: relative;
+      top: 5px;
+  }
