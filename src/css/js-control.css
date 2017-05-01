@@ -42,3 +42,12 @@
       position: relative;
       top: 5px;
   }
+  /*闹钟显示和消失*/
+  
+  .no-clock {
+      display: none;
+  }
+  
+  .show-clock {
+      display: inline-block;
+  }

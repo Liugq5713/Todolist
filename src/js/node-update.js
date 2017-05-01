@@ -12,20 +12,23 @@ function refreshNode(user_object) {
         delPanel(btnId);
         showData();
     }, false);
-
     //点击开始暂停事件
     startBtn.addEventListener('click', function() {
+        var myClock = document.querySelector('#myClock');
         user_object.started = !user_object.started;
         if (user_object.started) {
             startBtn.removeAttribute("src", "./src/img/start.svg");
             startBtn.classList.remove("start-img");
+            myClock.classList.remove('no-clock');
+            myClock.classList.add('show-clock');
             startBtn.classList.add("pause-img");
             startBtn.setAttribute("src", "./src/img/pause.svg");
 
         } else {
             startBtn.removeAttribute("src", "./src/img/pause.svg");
             startBtn.classList.remove("pause-img");
-
+            myClock.classList.remove('show-clock');
+            myClock.classList.add('no-clock');
             startBtn.classList.add("start-img");
             startBtn.setAttribute("src", "./src/img/start.svg");
         }
@@ -53,6 +56,14 @@ function refreshNode(user_object) {
 
     }, false);
 }
+//使用DOM缓存技术。把第一次取得的dom节点保存下来,但是直接报未定义的错
+// function getElement(name) {
+//     console.log(getElements.cache);
+//     if (!!(getElements.cache)) getElements.cache = {};
+//     return getElements.cache[name] =
+//         getElements.cache[name] || document.querySelector(name);
+// }
+
 
 //清除TODO显示面板上所有的节点
 function clearAllNodes() {

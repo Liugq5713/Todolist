@@ -18,7 +18,11 @@
             <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
             <button id="add" onclick="addList()" class="btn btn-success ">添加事项</button>
-
+            <div class="row">
+                <div class="col-md-12 ">
+                    <canvas id="myClock" class="no-clock" width="400" height="400"></canvas>
+                </div>
+            </div>
         </div>
         <div class="row  strip">
             <select id="todoShowWay" class="select-style">
@@ -36,6 +40,7 @@
         </div>
         <button id="Top" title="go to the top">TOP</button>
     </div>
+    <script src="./src/js/clock.js"></script>
     <script src="./src/js/todo-add.js"></script>
     <script src="./src/js/db-opt.js"></script>
     <script src="./src/js/db-setting.js"></script>
