@@ -31,8 +31,6 @@
       display: inline-block;
       width: 25px;
       height: 25px;
-      background-image: url('../img/start-pause.png');
-      background-size: 50px 25px;
       background-repeat: no-repeat;
       margin-left: 10px;
       padding: 6px 12px;
@@ -53,10 +51,14 @@
   }
   
   .start-img {
+      background-image: url('../img/start-pause.png');
+      background-size: 50px 25px;
       background-position: -2px;
   }
   
   .pause-img {
+      background-image: url('../img/start-pause.png');
+      background-size: 50px 25px;
       background-position: -26px;
   }
   /*闹钟显示和消失*/
@@ -67,4 +69,10 @@
   
   .show-clock {
       display: inline-block;
+  }
+  /*panel面板上的设置按钮*/
+  
+  .set-btn {
+      background-image: url('../img/edit.png');
+      background-size: 25px 25px;
   }

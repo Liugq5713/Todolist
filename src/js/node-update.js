@@ -3,6 +3,8 @@ function refreshNode(user_object) {
     var Panel = addPanel(user_object);
     var delBtn = addDelBtn(Panel["head"], user_object);
     var startBtn = addStartBtn(Panel["head"], user_object);
+    var setBtn = addSetBtn(Panel['head'], user_object);
+
 
 
     //监听删除事件
@@ -15,7 +17,10 @@ function refreshNode(user_object) {
     //点击开始暂停事件
     startBtn.addEventListener('click', function() {
         var myClock = document.querySelector('#myClock');
+        //这里输出的值为什么是undefine,讲道理应该是false
+        console.log(user_object.started);
         user_object.started = !user_object.started;
+        console.log(user_object.started);
         if (user_object.started) {
             startBtn.classList.remove("start-img");
             myClock.classList.remove('no-clock');
@@ -113,6 +118,7 @@ function addPanel(user_object) {
     return Panel;
 };
 
+//添加删除按钮
 function addDelBtn(panel_head, user_object) {
     //添加了一个删除按钮
     var delBtn = document.createElement("button");
@@ -128,14 +134,25 @@ function addDelBtn(panel_head, user_object) {
 };
 
 
-function addStartBtn(panel_head, user_object) {
-    //添加了一个删除按钮
-    var startBtn = document.createElement("button");
-    startBtn.classList.add("start-img");
-    startBtn.classList.add("btn-user");
-    panel_head.appendChild(startBtn);
+function addPanelBtn(panel_head, user_object) {
+    var btn = document.createElement('button');
+    btn.classList.add('btn-user');
+    panel_head.appendChild(btn);
     //给数据添加ID,方便查找与定义
-    startBtn.setAttribute("data-btnId", user_object.id);
-    // 把删除的按钮返回
+    btn.setAttribute("data-btnId", user_object.id);
+    // 按钮返回
+    return btn;
+}
+//添加开始暂停按钮
+function addStartBtn(panel_head, user_object) {
+    var startBtn = addPanelBtn(panel_head, user_object);
+    startBtn.classList.add("start-img");
     return startBtn;
+}
+
+//添加设置按钮
+function addSetBtn(panel_head, user_object) {
+    var setBtn = addPanelBtn(panel_head, user_object);
+    setBtn.classList.add("set-btn");
+    return setBtn;
 }
