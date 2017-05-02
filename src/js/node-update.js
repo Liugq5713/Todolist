@@ -17,20 +17,16 @@ function refreshNode(user_object) {
         var myClock = document.querySelector('#myClock');
         user_object.started = !user_object.started;
         if (user_object.started) {
-            startBtn.removeAttribute("src", "./src/img/start.svg");
             startBtn.classList.remove("start-img");
             myClock.classList.remove('no-clock');
             myClock.classList.add('show-clock');
             startBtn.classList.add("pause-img");
-            startBtn.setAttribute("src", "./src/img/pause.svg");
 
         } else {
-            startBtn.removeAttribute("src", "./src/img/pause.svg");
             startBtn.classList.remove("pause-img");
             myClock.classList.remove('show-clock');
             myClock.classList.add('no-clock');
             startBtn.classList.add("start-img");
-            startBtn.setAttribute("src", "./src/img/start.svg");
         }
     }, false);
 
@@ -134,10 +130,9 @@ function addDelBtn(panel_head, user_object) {
 
 function addStartBtn(panel_head, user_object) {
     //添加了一个删除按钮
-    var startBtn = document.createElement("input");
+    var startBtn = document.createElement("button");
     startBtn.classList.add("start-img");
-    startBtn.setAttribute("type", "image");
-    startBtn.setAttribute("src", "./src/img/start.svg");
+    startBtn.classList.add("btn-user");
     panel_head.appendChild(startBtn);
     //给数据添加ID,方便查找与定义
     startBtn.setAttribute("data-btnId", user_object.id);

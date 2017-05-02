@@ -28,7 +28,6 @@ function run() {
     var date = new Date();
     //秒针
     var second = date.getSeconds();
-    console.log(second);
     var xSecond = 110 * Math.cos(second * (Math.PI / 30) - Math.PI / 2) + 200;
     var ySecond = 110 * Math.sin(second * (Math.PI / 30) - Math.PI / 2) + 200;
     ctx.beginPath();
@@ -40,7 +39,6 @@ function run() {
 
     //分针
     var minute = date.getMinutes();
-    console.log(minute);
     var xMinute = 100 * Math.cos(minute * (Math.PI / 30) - Math.PI / 2) + 200;
     var yMinute = 100 * Math.sin(minute * (Math.PI / 30) - Math.PI / 2) + 200;
     ctx.beginPath();

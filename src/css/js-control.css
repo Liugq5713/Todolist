@@ -27,20 +27,37 @@
   }
   /*开始暂停按钮*/
   
-  .start-img {
-      width: 20px;
-      height: 23px;
+  .btn-user {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background-image: url('../img/start-pause.png');
+      background-size: 50px 25px;
+      background-repeat: no-repeat;
       margin-left: 10px;
-      position: relative;
-      top: 5px;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+  }
+  
+  .start-img {
+      background-position: -2px;
   }
   
   .pause-img {
-      width: 20px;
-      height: 23px;
-      margin-left: 10px;
-      position: relative;
-      top: 5px;
+      background-position: -26px;
   }
   /*闹钟显示和消失*/
   
