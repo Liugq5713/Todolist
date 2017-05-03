@@ -1,3 +1,5 @@
+//HTML的引用链接被我删除了
+
 document.querySelector('#notificate').addEventListener('click', function() {
     console.log("begin");
     if (window.Notification) {
