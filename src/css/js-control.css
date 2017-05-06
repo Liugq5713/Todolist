@@ -76,3 +76,14 @@
       background-image: url('../img/edit.png');
       background-size: 25px 25px;
   }
+  /*TODO事项的编辑表单*/
+  
+  .form-position {
+      width: 30%;
+      height: 30%;
+      background-color: #eee;
+      position: fixed;
+      top: 37%;
+      left: 37%;
+      z-index: 99;
+  }
