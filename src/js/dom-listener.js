@@ -21,4 +21,9 @@ panel.addEventListener('click', function(e) {
     if (e.target.classList[0] == 'panelDel') {
         delBtn(id);
     }
+
+    //点击edit按钮事件
+    if (e.target.classList[1] === 'set-btn') {
+        panelEventEdit(id);
+    }
 }, false);

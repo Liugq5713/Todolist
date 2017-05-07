@@ -80,10 +80,22 @@
   
   .form-position {
       width: 30%;
-      height: 30%;
+      padding-top: 10px;
       background-color: #eee;
       position: fixed;
       top: 37%;
       left: 37%;
       z-index: 99;
+  }
+  
+  .hidden-id {
+      display: none;
+  }
+  
+  .form-hidden {
+      display: none;
+  }
+  
+  .form-show {
+      display: inline-block;
   }

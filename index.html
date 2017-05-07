@@ -40,28 +40,23 @@
         </div>
 
         <!--添加一个编辑框-->
-        <form class="form-horizontal form-position">
+        <form id="editEventForm" class="form-horizontal form-position form-hidden">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-4 control-label">事件名:</label>
                 <div class="col-sm-7">
-                    <input type='text' class="form-control">
+                    <input type='text' id="todoEventName" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-4 control-label">添加标签:</label>
                 <div class="col-sm-7">
-                    <input type='text' class="form-control" id="inputEmail3">
+                    <input type='text' id="eventTag" class="form-control" id="inputEmail3">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-4 control-label">截止时间:</label>
-                <div class="col-sm-7">
-                    <input type="date" class="form-control" id="inputPassword3">
-                </div>
-            </div>
+            <input type="number" id="todoEventId" class="hidden-id">
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-7">
-                    <button type="submit" class="btn btn-default">提交修改</button>
+                    <button id="editEventSubmit" onclick="submitEvent()" class="btn btn-default">提交修改</button>
                 </div>
             </div>
         </form>
@@ -77,6 +72,7 @@
     <script src="./src/js/user-experience.js"></script>
     <script src="./src/js/dom-listener.js"></script>
     <script src="./src/js/node-change.js"></script>
+    <script src="./src/js/edit-todoevent.js"></script>
 
 </body>
 
