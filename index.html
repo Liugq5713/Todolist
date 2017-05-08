@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="mask mask-hidden"></div>
     <div class="container">
         <div class="jumbotron">
             <h2>Todolist to master your life</h2>
@@ -56,7 +57,7 @@
             <input type="number" id="todoEventId" class="hidden-id">
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-7">
-                    <button id="editEventSubmit" onclick="submitEvent()" class="btn btn-default">提交修改</button>
+                    <input id="editEventSubmit" type="submit" onclick="submitEvent()" class="btn btn-default"></input>
                 </div>
             </div>
         </form>

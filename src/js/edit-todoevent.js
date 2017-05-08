@@ -3,6 +3,9 @@ function panelEventEdit(id) {
     var editEventForm = document.querySelector('#editEventForm');
     editEventForm.classList.remove('form-hidden');
     editEventForm.classList.add('form-show');
+    document.querySelector('.mask').classList.remove('mask-hidden');
+    console.log(document.querySelector('.mask'));
+    document.querySelector('.mask').classList.add('mask-show');
     var transaction = db.transaction(["user"], "readwrite"),
         storeHander = transaction.objectStore('user');
     storeHander.get(id).onsuccess = function(e) {
@@ -29,20 +32,24 @@ function submitEvent() {
 
     var transaction = db.transaction(["user"], "readwrite"),
         storeHander = transaction.objectStore('user');
-    //TODO:修改数据库不成功
+    //TODO:修改数据库不成功，只是偶尔成功。
     storeHander.get(id).onsuccess = function(e) {
         var todoObj = e.target.result;
         console.log(todoObj);
         todoObj.user_event = eventName;
         todoObj.tag = tag;
-        storeHander.put(todoObj).onsuccess = function() {
-            console.log(e);
-        }
+        console.log(todoObj);
+        storeHander.put(todoObj).onsuccess = function(err) {
+            console.log(todoObj);
+        };
+
 
         storeHander.put(todoObj).onerror = function() {
             console.log(e);
             console.log("failed");
         }
-
     }
-}
+    storeHander.get(id).onerror = function(e) {
+        console.log("wrong");
+    }
+};
