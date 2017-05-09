@@ -4,6 +4,7 @@ var addList = function() {
     if (arrangement.user_event == '') {
         return false;
     }
+    console.log("add ");
     addData(arrangement);
     refreshNode(arrangement);
     clearInput();
@@ -11,7 +12,6 @@ var addList = function() {
 //获取输入的数据,并对数据进行处理
 var setEvent = function() {
     console.log(user_id);
-
     var item = document.getElementById('item').value;
     var createDate = new Date();
     var date = createDate.Format("yyyy年MM月dd日 hh:mm:ss");
@@ -23,7 +23,6 @@ var setEvent = function() {
         user_date: date,
         srarted: false
     }
-    console.log(arrangement);
     return arrangement;
 };
 
