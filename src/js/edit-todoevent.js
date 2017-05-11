@@ -45,8 +45,8 @@ function submitEvent() {
 
     //获取修改的数据
     var eventName = editEventForm.todoEventName.value;
-    var tag = editEventForm.eventTag.value;
-
+    var tag = tags.getAll();
+    console.log(tag);
     var transaction = db.transaction(["user"], "readwrite"),
         storeHandler = transaction.objectStore('user');
 
@@ -58,18 +58,13 @@ function submitEvent() {
 
     req.onsuccess = function(e) {
         var todoObj = e.target.result;
-        console.log(todoObj);
         todoObj.user_event = eventName;
         todoObj.tag = tag;
-        console.log(todoObj);
         var putReq = storeHandler.put(todoObj);
         putReq.onsuccess = function(err) {
-            console.log(todoObj);
+            console.log("edit successful");
         };
-        putReq.onerror = function() {
-            console.log(e);
-            console.log("failed");
-        }
+        putReq.onerror = function() {}
     }
 
 };

@@ -14,10 +14,11 @@ function pressEnter() {
     event.returnValue = false;
 }
 
+
 //清除输入框中的数据
 function clearInput() {
-    var inputComment = document.getElementById('item');
-    inputComment.value = "";
+    var inputTag = document.getElementById('item');
+    inputTag.value = "";
 }
 
 //添加回到顶部的按钮

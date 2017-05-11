@@ -6,9 +6,11 @@
     <title>Todolist</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./src/img/todo.ico">
-    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./src/css/main.css">
-    <link rel="stylesheet" type="text/css" href="./src/css/js-control.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/editform.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/panel.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/clock-moreinfo.css">
 
 </head>
 
@@ -43,27 +45,35 @@
         <!--添加一个编辑框-->
         <form id="editEventForm" method="post" class=" form-horizontal form-position form-hidden ">
             <div class="form-group ">
-                <label for="inputEmail3" class="col-sm-4 control-label ">事件名:</label>
+                <label class="col-sm-4 control-label ">事件名:</label>
                 <div class="col-sm-7 ">
-                    <input type='text' name="todoEventName" class="form-control ">
+                    <input type='text' name="todoEventName" class="form-control">
                 </div>
             </div>
             <div class="form-group ">
-                <label for="inputEmail3 " class="col-sm-4 control-label ">添加标签:</label>
-                <div class="col-sm-7 ">
-                    <input type='text' name="eventTag" class="form-control " id="inputEmail3 ">
+                <label class="col-sm-4 control-label ">添加标签:</label>
+                <div class="col-sm-7 fakeinput">
+                    <input type='text' id="tag" name="eventTag" class="form-control tag">
+                    <div id="hasAddTag">
+                        <p>添加的标签:</p>
+                    </div>
+                    <div id="offenUseTag">
+                        <p>常用的标签:</p>
+                    </div>
                 </div>
             </div>
-            <input type="number" name="todoEventId" class="hidden-id ">
+
             <div class="form-group ">
                 <div class="col-sm-offset-4 col-sm-7 ">
                     <button class="btn" type="submit">提交</button>
                 </div>
             </div>
+            <!--隐藏的数据-->
+            <input type="number" name="todoEventId" class="hidden-id ">
+
         </form>
         <button id="Top" title="go to the top ">TOP</button>
     </div>
-    <script src="./src/js/btn-panel.js "></script>
     <script src="./src/js/clock.js "></script>
     <script src="./src/js/todo-add.js "></script>
     <script src="./src/js/db-opt.js "></script>
@@ -74,6 +84,7 @@
     <script src="./src/js/dom-listener.js "></script>
     <script src="./src/js/node-change.js "></script>
     <script src="./src/js/edit-todoevent.js "></script>
+    <script src="./src/js/tag-module.js "></script>
 
 </body>
 
