@@ -1,34 +1,34 @@
-var tags = tags || {};
+tags = tags || {};
 tags = (function() {
-    var Tags = [];
+    let Tags = [];
     var Frequency = 0;
     var config = {
         showCount: 4,
     };
-    //  修改操作
-    edit = function(str) {
+    // 修改操作
+    var edit = function(str) {
 
     };
-    //读操作
-    getAll = function() {
+    // 读操作
+    var getAll = function() {
         return Tags;
     };
     //存入操作
-    push = function(str) {
+    var push = function(str) {
         //判断标签不是重复的
         if (Tags.indexOf(str) === -1) {
             return Tags.push(str);
         }
     };
     //排序操作，将用户最常使用的标签排在前面
-    sort = function() {
+    var sort = function() {
         Tags.sort();
     }
-    inputClear = function() {
+    var inputClear = function() {
         var tagContent = document.querySelector('#tag');
         tagContent.value = '';
     }
-    htmlAddTag = function() {
+    var htmlAddTag = function() {
         var hasAddTag = document.querySelector('#hasAddTag');
         var tagContent = document.querySelector('#tag');
         tags.push(tagContent.value);

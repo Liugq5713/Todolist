@@ -1,18 +1,17 @@
-//检测点击edit按钮事件
+// 检测点击edit按钮事件
+
 function panelEventEdit(id) {
     formShow();
-    //给表单显示一些提示信信息
+    // 给表单显示一些提示信信息
     var transaction = db.transaction(["user"], "readwrite"),
         storeHandler = transaction.objectStore('user');
     storeHandler.get(id).onsuccess = function(e) {
-        var todoObj = e.target.result;
-        console.log(editEventForm.elements);
-        console.log(editEventForm.elements['todoEventName']);
+        let todoObj = e.target.result;
         editEventForm.todoEventName.value = todoObj.user_event;
-        //如果有标签就显示，没有就不显示
-        //关于标签，应该是放在数组里面，并且使用标签分割。
-        //添加多个标签的时候，如何使用空格将他们分开。split()
-        if (!editEventForm.eventTag.value) {
+        // 如果有标签就显示，没有就不显示
+        // 关于标签，应该是放在数组里面，并且使用标签分割。
+        // 添加多个标签的时候，如何使用空格将他们分开。split()
+      if (!editEventForm.eventTag.value) {
 
         } else {
             editEventForm.eventTag.value = todoObj.tag;
@@ -28,20 +27,22 @@ editEventForm.addEventListener('submit', function(event) {
     event.preventDefault();
     submitEvent();
     showData();
-    //把面板关闭（隐藏）
+    // 把面板关闭（隐藏）
     formHidden();
 }, false);
 
 function submitEvent() {
+    var tags = tags;
+    console.log(tags);
     //获取表单根元素
     var editEventForm = document.querySelector('#editEventForm');
 
-    //获取id值
-    var id = editEventForm.todoEventId.value;
+    // 获取id值
+    let id = editEventForm.todoEventId.value;
     console.log(id);
 
     //注意获取到的id值是string类型的。
-    var id = Number(id);
+    id = Number(id);
 
     //获取修改的数据
     var eventName = editEventForm.todoEventName.value;
@@ -82,7 +83,7 @@ function formShow() {
 }
 //隐藏编辑表单
 function formHidden() {
-    //获取到表单
+    // 获取到表单
     var editEventForm = document.querySelector('#editEventForm');
     //让表单显示
     editEventForm.classList.remove('form-show');
