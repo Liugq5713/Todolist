@@ -1,7 +1,7 @@
   /*TODO事项的编辑表单*/
   
   .form-position {
-      width: 30%;
+    
       padding-top: 10px;
       background-color: #eee;
       position: fixed;
@@ -41,10 +41,6 @@
       background-color: rgba(120, 120, 120, 0.5);
   }
   /*利用背景设置标签图标*/
-  
-  .fakeinput {
-      border: 1px solid #eee;
-  }
   
   .tag {
       background-image: url(../img/tag.png);
