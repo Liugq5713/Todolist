@@ -14,13 +14,13 @@
 
 </head>
 
-<body>
+<body onload="TODO.DB.init()">
     <div class="mask mask-hidden"></div>
     <div class="container">
         <div class="jumbotron">
             <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
-            <button id="add" onclick="addList()" class="btn btn-success ">添加事项</button>
+            <button id="add" onclick="TODO.List.addList()" class="btn btn-success ">添加事项</button>
             <div class="row">
                 <div class="col-md-12 ">
                     <canvas id="myClock" class="no-clock" width="400" height="400"></canvas>
@@ -45,56 +45,53 @@
         <!--添加一个编辑框-->
         <div class="row">
             <div class="col-offset-md-6 col-md-6">
-            <form id="editEventForm" method="post" class=" form-horizontal form-position form-hidden ">
-            <div class="row">
-                <div class="form-group ">
-                <label class="col-md-4 control-label col-sm-4">事件名:</label>
-                <div class="col-md-7 col-sm-12">
-                    <input type='text' name="todoEventName" class="form-control">
-                </div>
-            </div>
-            <div class="form-group ">
-                <label class="col-md-4 control-label col-sm-4">添加标签:</label>
-                <div class="col-md-7 fakeinput col-sm-12">
-                    <input type='text' id="tag" maxlength=8 name="eventTag" class="form-control tag">
-                    <div id="hasAddTag">
-                        <p>添加的标签:</p>
-                    </div>
-                    <div id="offenUseTag">
-                        <p>常用的标签:</p>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group ">
-                <div class="col-md-offset-4 col-md-7 col-sm-12">
-                    <button class="btn" type="submit">提交</button>
-                </div>
-            </div>
-            <!--隐藏的数据-->
-            <input type="number" name="todoEventId" class="hidden-id ">
+                <form id="editEventForm" method="post" class=" form-horizontal form-position form-hidden ">
+                    <div class="row">
+                        <div class="form-group ">
+                            <label class="col-md-4 control-label col-sm-4">事件名:</label>
+                            <div class="col-md-7 col-sm-12">
+                                <input type='text' name="todoEventName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-md-4 control-label col-sm-4">添加标签:</label>
+                            <div class="col-md-7 fakeinput col-sm-12">
+                                <input type='text' id="tag" maxlength=8 name="eventTag" class="form-control tag">
+                                <div id="hasAddTag">
+                                    <p>添加的标签:</p>
+                                </div>
+                                <div id="offenUseTag">
+                                    <p>常用的标签:</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-md-offset-4 col-md-7 col-sm-12">
+                                <button class="btn" type="submit">提交</button>
+                            </div>
+                        </div>
+                        <!--隐藏的数据-->
+                        <input type="number" name="todoEventId" class="hidden-id ">
 
-            </div>
-            
-        </form>
+                    </div>
+
+                </form>
             </div>
 
         </div>
-       
+
         <button id="Top" title="go to the top ">TOP</button>
     </div>
 
+    <script src="./src/js/init.js "></script>
     <script src="./src/js/clock.js "></script>
-    <script src="./src/js/todo-add.js "></script>
-    <script src="./src/js/db-opt.js "></script>
-    <script src="./src/js/db-setting.js "></script>
-    <script src="./src/js/db-show.js "></script>
-    <script src="./src/js/node-update.js "></script>
+    <script src="./src/js/db.js "></script>
+    <script src="./src/js/panel.js "></script>
     <script src="./src/js/user-experience.js "></script>
     <script src="./src/js/dom-listener.js "></script>
-    <script src="./src/js/node-change.js "></script>
-    <script src="./src/js/edit-todoevent.js "></script>
+    <script src="./src/js/list.js "></script>
     <script src="./src/js/tag-module.js "></script>
-    <script src="./src/js/style-opt.js "></script>
+    <script src="./src/js/editform.js "></script>
 
 </body>
 
