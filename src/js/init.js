@@ -4,7 +4,8 @@ TODO = {
     Panel: {},
     tags: {},
     editForm: {},
-    List: {}
+    List: {},
+    Clock: {}
 };
 
 TODO.addClass = function(domElement) {

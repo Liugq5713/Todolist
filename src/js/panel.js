@@ -50,6 +50,8 @@ TODO.Panel.addPanel = function(user_object) {
     Panel.panel = panel;
     return Panel;
 };
+
+
 // 添加小图标的公用函数
 TODO.Panel.addPanelBtn = function(panel_head, user_object) {
     const btn = document.createElement('button');
