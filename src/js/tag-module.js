@@ -48,12 +48,12 @@ TODO.tags = (function() {
 }());
 // 对于标签的处理
 // 按空格键提交
-document.getElementById('tag').addEventListener('keydown', (e) => {
-    const keycode = e.keyCode;
-    // 将模块赋值给一个局部变量
-    let tags = TODO.tags;
-    if (keycode === 32) {
-        tags.addTag();
-        tags.clear();
-    }
-}, false);
+// document.getElementById('tag').addEventListener('keydown', (e) => {
+//     const keycode = e.keyCode;
+//     // 将模块赋值给一个局部变量
+//     let tags = TODO.tags;
+//     if (keycode === 32) {
+//         tags.addTag();
+//         tags.clear();
+//     }
+// }, false);

@@ -21,6 +21,14 @@ TODO.delClass = function(domElement) {
     }
 };
 
+//单例模式
+TODO.single = function(fn) {
+    var result;
+    return function() {
+        return result || (result = fn.apply(this, arguments));
+    }
+};
+
 // 格式化日期,来源网络
 Date.prototype.Format = function(fmt) {
     const o = {

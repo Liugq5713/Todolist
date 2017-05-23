@@ -29,7 +29,6 @@ TODO.editForm.submitEvent = function() {
     console.log(tags);
     // 获取表单根元素
     const editEventForm = document.querySelector('#editEventForm');
-
     // 获取id值
     let id = editEventForm.todoEventId.value;
     // 注意获取到的id值是string类型的。
@@ -83,10 +82,55 @@ TODO.editForm.panelEventEdit = function(id) {
     };
 }
 
-editEventForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    TODO.editForm.submitEvent();
-    TODO.DB.showData();
-    // 把面板关闭（隐藏）
-    TODO.editForm.formHidden();
-}, false);
+TODO.editForm.createForm = function() {
+    //一个表单元素
+    var form = document.createElement('form');
+    form.id = 'editEventForm';
+    TODO.addClass(form, 'form-horizontal', 'form-position', 'form-hidden');
+    //事件名
+    var TodoName = TODO.editForm.createLabel('事件名:', "todoEventName");
+    console.log(TodoName);
+    console.log(TodoName.childNodes[0]);
+    TODO.addClass(TodoName.childNodes[1], 'form-control');
+    var TagName = TODO.editForm.createLabel('标签名:', "eventTag");
+    TODO.addClass(TagName.childNodes[1], 'tag', 'form-control');
+    var btn = TODO.editForm.createButton();
+
+    //新建一个隐藏数据的输入框
+    var inputDataHidden = document.createElement('input');
+    inputDataHidden.name = "todoEventId";
+    TODO.addClass(inputDataHidden, "hidden-id");
+    //把这些元素附在form表单上
+    form.appendChild(TodoName);
+    form.appendChild(TagName);
+    form.appendChild(btn);
+    form.appendChild(inputDataHidden);
+    document.querySelector('.container').appendChild(form);
+    //标签
+    return form;
+};
+
+TODO.editForm.createLabel = function(name, inputName) {
+    var div = document.createElement('div');
+    div.classList.add('form-group');
+    var label = document.createElement('label');
+    var labelText = document.createTextNode(name);
+    var input = document.createElement('input');
+    input.name = inputName;
+    input.type = 'text';
+    label.appendChild(labelText);
+    div.appendChild(label);
+    div.appendChild(input);
+    return div;
+}
+
+TODO.editForm.createButton = function() {
+    var div = document.createElement('div');
+    div.classList.add('form-group');
+    var btn = document.createElement('button');
+    btn.classList.add('btn');
+    var btnText = document.createTextNode('提交');
+    btn.appendChild(btnText);
+    div.appendChild(btn);
+    return div;
+};

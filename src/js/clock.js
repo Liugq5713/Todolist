@@ -2,12 +2,12 @@ TODO.Clock.canvas = document.getElementById('myClock');
 TODO.Clock.ctx = TODO.Clock.canvas.getContext('2d');
 //画出大体钟的框架，其实这段函数里面就是一个圆
 TODO.Clock.drawMap = function() {
-    var ctx = TODO.Clock.ctx;
-    ctx.beginPath();
-    ctx.strokeStyle = 'green';
-    ctx.arc(200, 200, 120, 0, 2 * Math.PI, true);
-    ctx.closePath();
-    ctx.stroke();
+    // var ctx = TODO.Clock.ctx;
+    // ctx.beginPath();
+    // ctx.strokeStyle = 'green';
+    // ctx.arc(200, 200, 120, 0, 2 * Math.PI, true);
+    // ctx.closePath();
+    // ctx.stroke();
 
     // for (let i = 0; i < 12; i++) {
     //     const x = 120 * Math.cos(i * (Math.PI / 6)) + 200;
