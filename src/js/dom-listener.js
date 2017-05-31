@@ -26,7 +26,6 @@
         // 点击edit按钮事件
         if (hasClass(e.target, 'set-btn')) {
             TODO.single(TODO.editForm.createForm);
-            console.log(result);
             TODO.editForm.panelEventEdit(id);
             editEventForm.addEventListener('submit', (event) => {
                 event.preventDefault();

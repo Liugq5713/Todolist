@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="./src/css/main.css">
     <link rel="stylesheet" type="text/css" href="./src/css/editform.css">
     <link rel="stylesheet" type="text/css" href="./src/css/panel.css">
-    <link rel="stylesheet" type="text/css" href="./src/css/clock-moreinfo.css">
-
+    <link rel="stylesheet" type="text/css" href="./src/css/EventRunInfo.css">
+    <script src="./src/js/ejs.js"></script>
 </head>
 
 <body onload="TODO.DB.init()">
@@ -21,9 +21,17 @@
             <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
             <button id="add" onclick="TODO.List.addList()" class="btn btn-success ">添加事项</button>
-            <div class="row">
-                <div class="col-md-12 ">
-                    <canvas id="myClock" class="no-clock" width="400" height="400"></canvas>
+            <div class="row" id="info">
+                <div class="col-md-3 info-pos">
+                    <img src="./src/img/runningEvent.png">
+                    <p>当前事件</p>
+                </div>
+                <div class="col-md-5 ">
+                    <canvas id="myClock" class="show-clock" width="350" height="350"></canvas>
+                </div>
+                <div class="col-md-3  info-pos">
+                    <img src="./src/img/pomodoro.png">
+                    <p>番茄时间</p>
                 </div>
             </div>
         </div>
@@ -41,6 +49,43 @@
         <div class="row" id="showData">
         </div>
         <button id="Top" title="go to the top ">TOP</button>
+        <!--这里添加一个表单的模板-->
+        <div id="model">
+            <script type="text/html" id="editFormModel">
+                <!--添加一个编辑框-->
+                <div class="row">
+                    <div class="col-offset-md-6 col-md-6">
+                        <form id="editEventForm" method="post" class=" form-horizontal form-position form-hidden ">
+                            <div class="row">
+                                <div class="form-group ">
+                                    <label class="col-md-4 control-label col-sm-4">事件名:</label>
+                                    <div class="col-md-7 col-sm-12">
+                                        <%= user_event %>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="col-md-4 control-label col-sm-4">添加标签:</label>
+                                    <div class="col-md-7 fakeinput col-sm-12">
+                                        <input type='text' id="tag" maxlength=8 name="eventTag" class="form-control tag">
+                                        <div id="hasAddTag">
+                                            <p>添加的标签:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-offset-4 col-md-7 col-sm-12">
+                                        <button class="btn" type="submit">提交</button>
+                                    </div>
+                                </div>
+                                <!--隐藏的数据-->
+                                <input type="number" name="todoEventId" class="hidden-id ">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </script>
+        </div>
+
     </div>
 
     <script src="./src/js/init.js "></script>
@@ -52,6 +97,7 @@
     <script src="./src/js/list.js "></script>
     <script src="./src/js/tag-module.js "></script>
     <script src="./src/js/editform.js "></script>
+    <script src="./src/js/modelRender.js "></script>
 
 </body>
 

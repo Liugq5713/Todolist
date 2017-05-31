@@ -1,0 +1,24 @@
+/*信息面板的显示与消失*/
+
+.show-info {
+    display: inline-block;
+}
+
+.show-info {
+    display: none;
+}
+
+.info-pos {
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+#info .img {
+    display: inline;
+    text-align: center;
+}
+
+
+/*div {
+    border: 1px solid black;
+}*/

@@ -1,5 +1,9 @@
 TODO.Clock.canvas = document.getElementById('myClock');
 TODO.Clock.ctx = TODO.Clock.canvas.getContext('2d');
+
+TODO.Clock.width = TODO.Clock.canvas.width;
+TODO.Clock.height = TODO.Clock.canvas.height;
+
 //画出大体钟的框架，其实这段函数里面就是一个圆
 TODO.Clock.drawMap = function() {
     // var ctx = TODO.Clock.ctx;
@@ -34,7 +38,7 @@ TODO.Clock.Ring = function(x, y) {
 
     ctx.lineWidth = 20;
     ctx.beginPath();
-    ctx.arc(200, 200, 120, x, y, true);
+    ctx.arc(TODO.Clock.width / 2, TODO.Clock.height / 2, 120, x, y, true);
     ctx.stroke();
 };
 //画出动态圈的函数
@@ -88,7 +92,7 @@ TODO.Clock.runPointer = function() {
 //刷新你的clock界面，让钟运动起来
 TODO.Clock.flashMap = function() {
     var ctx = TODO.Clock.ctx;
-    ctx.clearRect(0, 0, 400, 400);
+    ctx.clearRect(0, 0, TODO.Clock.width, TODO.Clock.height);
     TODO.Clock.drawMap();
     TODO.Clock.drawRing();
     TODO.Clock.runPointer();
