@@ -1,27 +1,86 @@
 TODO.Clock.canvas = document.getElementById('myClock');
 TODO.Clock.ctx = TODO.Clock.canvas.getContext('2d');
+//时钟本身的配置
+TODO.Clock.cfg = {
+    //canvas的宽高
+    width: TODO.Clock.canvas.width,
+    height: TODO.Clock.canvas.height,
+    //圆心相对于0，0点处的偏移量
 
-TODO.Clock.width = TODO.Clock.canvas.width;
-TODO.Clock.height = TODO.Clock.canvas.height;
-
+    radius: 120,
+    //线的长度
+    hLength: 50,
+    mLength: 70,
+    sLength: 90
+};
+//番茄钟的配置
+TODO.Clock.pomodoro_cfg = {
+    //这是以分为单位的番茄时间,时间到就提醒
+    Time: 1,
+    //这是表盘上显示点的个数
+    DotCount: 15
+};
+//表示一个点代表多少秒
+TODO.Clock.scale = 60 * TODO.Clock.pomodoro_cfg.Time / TODO.Clock.pomodoro_cfg.DotCount;
+//当打开时，获得点开闹钟时的初始时间
+TODO.Clock.RecordTime = (function() {
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var mCnt = 60 * (h * 60 + m) + s;
+    return mCnt;
+})();
+TODO.Clock.getCurTime = function() {
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var mCnt = 60 * (h * 60 + m) + s;
+    return mCnt;
+};
 //画出大体钟的框架，其实这段函数里面就是一个圆
 TODO.Clock.drawMap = function() {
-    // var ctx = TODO.Clock.ctx;
-    // ctx.beginPath();
-    // ctx.strokeStyle = 'green';
-    // ctx.arc(200, 200, 120, 0, 2 * Math.PI, true);
-    // ctx.closePath();
-    // ctx.stroke();
+    var count = TODO.Clock.pomodoro_cfg.DotCount;
+    var ctx = TODO.Clock.ctx;
+    var offset = TODO.Clock.cfg.width / 2;
+    var r = TODO.Clock.cfg.radius;
+    for (let i = 0; i < count; i++) {
+        const x = r * Math.cos(i * (2 * Math.PI / count)) + offset;
+        const y = r * Math.sin(i * (2 * Math.PI / count)) + offset;
+        ctx.fillStyle = ' green';
+        ctx.lineWidth = 0.1;
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke();
+    }
+};
 
-    // for (let i = 0; i < 12; i++) {
-    //     const x = 120 * Math.cos(i * (Math.PI / 6)) + 200;
-    //     const y = 120 * Math.sin(i * (Math.PI / 6)) + 200;
-    //     ctx.fillStyle = 'green';
-    //     ctx.beginPath();
-    //     ctx.arc(x, y, 2, 0, 2 * Math.PI, true);
-    //     ctx.closePath();
-    //     ctx.stroke();
-    // }
+TODO.Clock.runTime = function() {
+    var count = TODO.Clock.pomodoro_cfg.DotCount;
+    var ctx = TODO.Clock.ctx;
+    var r = TODO.Clock.cfg.radius;
+    var offset = TODO.Clock.cfg.width / 2;
+
+    var CurTime = TODO.Clock.getCurTime();
+    var passTime = CurTime - TODO.Clock.RecordTime;
+    var dotMin = TODO.Clock.scale;
+    var cnt = parseInt(passTime / dotMin);
+    console.log(cnt);
+    for (let i = 0; i < cnt; i++) {
+        var x = r * Math.cos(i * (2 * Math.PI / count)) + offset;
+        var y = r * Math.sin(i * (2 * Math.PI / count)) + offset;
+        console.log(i, x, y, r);
+        ctx.fillStyle = 'black';
+        ctx.lineWidth = 0.1;
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke();
+    }
 };
 //一个圈的函数
 TODO.Clock.Ring = function(x, y) {
@@ -52,39 +111,42 @@ TODO.Clock.drawRing = function() {
 };
 //钟上面的指针
 TODO.Clock.runPointer = function() {
+
+    var r = TODO.Clock.cfg.radius;
+    var offset = TODO.Clock.cfg.width / 2;
     var ctx = TODO.Clock.ctx;
     ctx.lineWidth = 2;
     // 获取当前时间
     const date = new Date();
     // 秒针
     const second = date.getSeconds();
-    const xSecond = 110 * Math.cos(second * (Math.PI / 30) - Math.PI / 2) + 200;
-    const ySecond = 110 * Math.sin(second * (Math.PI / 30) - Math.PI / 2) + 200;
+    const xSecond = 90 * Math.cos(second * (Math.PI / 30) - Math.PI / 2) + offset;
+    const ySecond = 90 * Math.sin(second * (Math.PI / 30) - Math.PI / 2) + offset;
     ctx.beginPath();
     ctx.strokeStyle = 'green';
-    ctx.moveTo(200, 200);
+    ctx.moveTo(offset, offset);
     ctx.lineTo(xSecond, ySecond);
     ctx.closePath();
     ctx.stroke();
 
     // 分针
     const minute = date.getMinutes();
-    const xMinute = 100 * Math.cos(minute * (Math.PI / 30) - Math.PI / 2) + 200;
-    const yMinute = 100 * Math.sin(minute * (Math.PI / 30) - Math.PI / 2) + 200;
+    const xMinute = 70 * Math.cos(minute * (Math.PI / 30) - Math.PI / 2) + offset;
+    const yMinute = 70 * Math.sin(minute * (Math.PI / 30) - Math.PI / 2) + offset;
     ctx.beginPath();
     ctx.strokeStyle = 'green';
-    ctx.moveTo(200, 200);
+    ctx.moveTo(offset, offset);
     ctx.lineTo(xMinute, yMinute);
     ctx.closePath();
     ctx.stroke();
 
     // 时针
     const hour = date.getHours() % 12;
-    const xHour = 80 * Math.cos(hour * (Math.PI / 6) + minute * (Math.PI / 360) - Math.PI / 2) + 200;
-    const yHour = 80 * Math.sin(hour * (Math.PI / 6) + minute * (Math.PI / 360) - Math.PI / 2) + 200;
+    const xHour = 50 * Math.cos(hour * (Math.PI / 6) + minute * (Math.PI / 360) - Math.PI / 2) + offset;
+    const yHour = 50 * Math.sin(hour * (Math.PI / 6) + minute * (Math.PI / 360) - Math.PI / 2) + offset;
     ctx.beginPath();
     ctx.strokeStyle = 'green';
-    ctx.moveTo(200, 200);
+    ctx.moveTo(offset, offset);
     ctx.lineTo(xHour, yHour);
     ctx.closePath();
     ctx.stroke();
@@ -92,10 +154,10 @@ TODO.Clock.runPointer = function() {
 //刷新你的clock界面，让钟运动起来
 TODO.Clock.flashMap = function() {
     var ctx = TODO.Clock.ctx;
-    ctx.clearRect(0, 0, TODO.Clock.width, TODO.Clock.height);
+    ctx.clearRect(0, 0, TODO.Clock.cfg.width, TODO.Clock.cfg.height);
     TODO.Clock.drawMap();
-    TODO.Clock.drawRing();
     TODO.Clock.runPointer();
+    TODO.Clock.runTime();
 };
 
-setInterval(TODO.Clock.flashMap, 30);
+setInterval(TODO.Clock.flashMap, 1000);
