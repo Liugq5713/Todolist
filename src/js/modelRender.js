@@ -12,7 +12,7 @@ xhrEjs.onreadystatechange = function() {
         xhrClock.onreadystatechange = function() {
             if (xhrClock.readyState == 4) {
                 var script = document.createElement('script');
-                script.type = 'type/javascript';
+                script.type = 'text/javascript';
                 script.text = xhrClock.responseText;
                 document.body.appendChild(script);
             }
