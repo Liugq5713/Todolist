@@ -68,11 +68,9 @@ TODO.Clock.runTime = function() {
     var passTime = CurTime - TODO.Clock.RecordTime;
     var dotMin = TODO.Clock.scale;
     var cnt = parseInt(passTime / dotMin);
-    console.log(cnt);
     for (let i = 0; i < cnt; i++) {
         var x = r * Math.cos(i * (2 * Math.PI / count)) + offset;
         var y = r * Math.sin(i * (2 * Math.PI / count)) + offset;
-        console.log(i, x, y, r);
         ctx.fillStyle = 'black';
         ctx.lineWidth = 0.1;
         ctx.beginPath();
@@ -80,6 +78,40 @@ TODO.Clock.runTime = function() {
         ctx.fill();
         ctx.closePath();
         ctx.stroke();
+    }
+    //如果运行时间达到番茄时间了，那么就发送一个提醒
+    if (passTime === (60 * TODO.Clock.pomodoro_cfg.Time)) {
+        console.log(passTime);
+        console.log(60 * TODO.Clock.pomodoro_cfg.Time);
+        TODO.Clock.sendNotification();
+    }
+
+};
+TODO.Clock.sendNotification = function() {
+    if (window.Notification) {
+        //允许通知
+        if (Notification.permission == 'granted') {
+            console.log(1);
+            const notication = new Notification('任务完成了嘛？ ', {
+                body: '先休息一下吧',
+                tag: '// 标签',
+                // icon: "//字符串。通知面板左侧那个图标地址。
+            });
+            //不是拒绝状态，但是还是需要去申请
+        } else if (Notification.permission != 'denied') {
+
+            Notification.requestPermission().then((permission) => {
+                if (permission == 'granted') {
+                    const notification = new Notification('任务完成了嘛？ ', {
+                        body: '先休息一下吧',
+                        tag: '// 标签',
+                        // icon: "//字符串。通知面板左侧那个图标地址。
+                    });
+                }
+            });
+        } else {
+            alert('nothing');
+        }
     }
 };
 //一个圈的函数
