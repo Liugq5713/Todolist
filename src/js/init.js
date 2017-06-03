@@ -28,7 +28,36 @@ TODO.single = function(fn) {
         return result || (result = fn.apply(this, arguments));
     }
 };
-
+//异步和异步操作加载单例模式的模板,
+TODO.AJAX = {
+    addModule: function(dom, src) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', src, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                //加载模板操作
+                html = ejs.render(xhr.responseText);
+                document.getElementById(dom).innerHTML = html;
+            }
+        }
+        return this;
+    },
+    addScript: function(src) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', src, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.text = xhr.responseText;
+                document.body.appendChild(script);
+            }
+        }
+        return this;
+    }
+};
 // 格式化日期,来源网络
 Date.prototype.Format = function(fmt) {
     const o = {
