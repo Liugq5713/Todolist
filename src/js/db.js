@@ -3,14 +3,18 @@ window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || 
 window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 window.IDBCursor = window.IDBCursor || window || window.webkitIDBCursor || window.msIDBCursor;
 
-// 数据库初始化
+
+// 数据库初始化，数据库的函数应该只是返回数据而已
+//但是因为是异步的，所以给数据库传入异步函数。
 TODO.DB = (function(request) {
     init = function() {
+        console.log('init');
         request.onerror = function(e) {
             console.log('failed');
         };
 
         request.onupgradeneeded = function(e) {
+            console.log('upgradeneeded');
             db = e.target.result;
             if (!db.objectStoreNames.contains('user')) {
                 // 在这里可以设置键值，也可以是auto
@@ -26,7 +30,7 @@ TODO.DB = (function(request) {
         };
         // 异步成功后才能获取到
         request.onsuccess = function(e) {
-            console.log("here");
+            console.log("success");
             db = e.target.result;
             TODO.DB.showData();
             user_id = TODO.DB.getID();
@@ -161,3 +165,7 @@ TODO.DB = (function(request) {
         addData
     }
 })(indexedDB.open('todolist', 1));
+
+window.onload = function() {
+    TODO.DB.init();
+};

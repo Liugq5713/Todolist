@@ -30,7 +30,8 @@ TODO.single = function(fn) {
 };
 //异步和异步操作加载单例模式的模板,
 TODO.AJAX = {
-    addModule: function(dom, src) {
+    //使用ajax加载数据
+    addModule: function(dom, src, callback) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', src, true);
         xhr.send();
@@ -38,24 +39,17 @@ TODO.AJAX = {
             if (xhr.readyState == 4) {
                 //加载模板操作
                 html = ejs.render(xhr.responseText);
-                document.getElementById(dom).innerHTML = html;
+                document.querySelector(dom).innerHTML = html;
+                callback.call(this, html);
             }
         }
-        return this;
     },
+    //使用动态script加载script脚本
     addScript: function(src) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', src, true);
-        xhr.send();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.text = xhr.responseText;
-                document.body.appendChild(script);
-            }
-        }
-        return this;
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        document.body.appendChild(script);
     }
 };
 // 格式化日期,来源网络
