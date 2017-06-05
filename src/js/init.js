@@ -40,7 +40,8 @@ TODO.AJAX = {
                 //加载模板操作
                 html = ejs.render(xhr.responseText);
                 document.querySelector(dom).innerHTML = html;
-                callback.call(this, html);
+                //这边如果想操作，可以传入回调函数。
+                // callback.call(this, html);
             }
         }
     },
