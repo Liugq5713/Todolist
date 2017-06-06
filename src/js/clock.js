@@ -16,7 +16,7 @@ TODO.Clock.cfg = {
 //番茄钟的配置
 TODO.Clock.pomodoro_cfg = {
     //这是以分为单位的番茄时间,时间到就提醒
-    Time: 1,
+    Time: 25,
     //这是表盘上显示点的个数
     DotCount: 15
 };

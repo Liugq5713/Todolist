@@ -31,15 +31,21 @@ TODO.single = function(fn) {
 //异步和异步操作加载单例模式的模板,
 TODO.AJAX = {
     //使用ajax加载数据
-    addModule: function(dom, src, callback) {
+    addModule: function(dom, src, data) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', src, true);
         xhr.send();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 //加载模板操作
-                html = ejs.render(xhr.responseText);
-                document.querySelector(dom).innerHTML = html;
+                if (data) {
+                    console.dir(data);
+                    html = ejs.render(xhr.responseText, data);
+                    document.querySelector(dom).innerHTML = html;
+                } else {
+                    html = ejs.render(xhr.responseText);
+                    document.querySelector(dom).innerHTML = html;
+                }
                 //这边如果想操作，可以传入回调函数。
                 // callback.call(this, html);
             }

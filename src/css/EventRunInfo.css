@@ -4,7 +4,7 @@
     display: inline-block;
 }
 
-.show-info {
+.hidden-info {
     display: none;
 }
 
@@ -13,7 +13,7 @@
     margin-left: 3%;
 }
 
-#info .img {
+.info-pos .img {
     display: inline;
     text-align: center;
 }

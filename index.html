@@ -20,7 +20,8 @@
             <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
             <button id="add" onclick="TODO.List.addList()" class="btn btn-success ">添加事项</button>
-            <div class="row" id="info">
+            <!--添加正在运行的事项面板-->
+            <div class="row hidden-info" id="info">
 
             </div>
         </div>
@@ -35,7 +36,7 @@
             <!--<button id="notificate">test</button>-->
         </div>
         <!--动态添加TODO的数据-->
-        <div class="row" id="showData">
+        <div class="row" id="panel-display">
         </div>
         <button id="Top" title="go to the top ">TOP</button>
         <!--这里添加一个表单的模板-->
@@ -86,6 +87,7 @@
     <script src="./src/js/tag-module.js "></script>
     <script src="./src/js/editform.js "></script>
     <script src="./src/js/event-run-info.js "></script>
+    <script src="./src/js/test.js "></script>
 
 </body>
 
