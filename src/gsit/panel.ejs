@@ -1,13 +1,27 @@
-<% for(x in arr){ %>
+<%   if (Object.prototype.toString.call(arr) === '[object Object]') {  %>
     <div class="panel panel-info">
         <div class="panel-heading">
-            <%= arr[x].user_date %>
-                <button class="panelDel" arr[x]-panelid="<%= arr[x].id%>">delete</button>
-                <button class="btn-user start-pause start-img" arr[x]-panelid="<%= arr[x].id%>"></button>
-                <button class="btn-user set-btn" arr[x]-panelid="<%= arr[x].id%>"></button>
+            <%= arr.user_date %>
+                <button class="panelDel" data-panelId="<%= arr.id%>">delete</button>
+                <button class="btn-user start-pause start-img" data-panelId="<%= arr.id%>"></button>
+                <button class="btn-user set-btn" data-panelId="<%= arr.id%>"></button>
         </div>
-        <div class="panel-body eventTodo" arr[x]-panelid="<%= arr[x].id%>">
-            <%= arr[x].user_event%>
+        <div class="panel-body eventTodo" data-panelId="<%= arr.id%>">
+            <%= arr.user_event%>
         </div>
     </div>
-    <% } %>
+    <%   }else{ %>
+        <% for(x in arr){ %>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <%= arr[x].user_date %>
+                        <button class="panelDel" data-panelId="<%= arr[x].id%>">delete</button>
+                        <button class="btn-user start-pause start-img" data-panelId="<%= arr[x].id%>"></button>
+                        <button class="btn-user set-btn" data-panelId="<%= arr[x].id%>"></button>
+                </div>
+                <div class="panel-body eventTodo" data-panelId="<%= arr[x].id%>">
+                    <%= arr[x].user_event%>
+                </div>
+            </div>
+            <% } %>
+                <%   } %>

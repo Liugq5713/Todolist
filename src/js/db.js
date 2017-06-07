@@ -32,7 +32,10 @@ TODO.DB = {
         // 异步成功后才能获取到
         request.onsuccess = function(e) {
             db = e.target.result;
-            // user_id = TODO.DB.getID();
+            //加载数据的模板
+            TODO.DB.event_all(TODO.AJAX.addModule, '#panel-display', './src/gsit/panel.ejs');
+            user_id = TODO.DB.id_now();
+            console.log(user_id);
             // const todoShowSelect = document.querySelector('#todoShowWay');
             // todoShowSelect.addEventListener('change', (e) => {
             //     switch (todoShowSelect.value) {
@@ -106,7 +109,7 @@ TODO.DB = {
         };
     },
     // 展示数据
-    event_all: function() {
+    event_all: function(callback, dom, src) {
         var arr = [];
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
@@ -115,15 +118,9 @@ TODO.DB = {
             const cursor = e.target.result;
             if (cursor) {
                 arr.push(cursor.value);
-                // TODO.AJAX.addModule('#panel-display', './src/gsit/panel.ejs', data)
-                // callback.call(this, data);
                 cursor.continue();
             } else {
-                console.log(arr);
-                console.log('DB' + arr[0].user_date);
-                TODO.AJAX.addModule('#panel-display', './src/gsit/panel.ejs', arr)
-
-
+                callback.call(this, dom, src, arr);
                 console.log('done');
             }
 

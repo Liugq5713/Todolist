@@ -31,7 +31,6 @@
                 <option class="sel-sub" value="showDataDone">已完成</option>
                 <option class="sel-sub" value="showDataTodo">未完成</option>
             </select>
-
             <button id="delete" class=" btn-userdefine">删除所有事件</button>
             <!--<button id="notificate">test</button>-->
         </div>
@@ -39,42 +38,6 @@
         <div class="row" id="panel-display">
         </div>
         <button id="Top" title="go to the top ">TOP</button>
-        <!--这里添加一个表单的模板-->
-        <div id="model">
-            <script type="text/html" id="editFormModel">
-                <!--添加一个编辑框-->
-                <div class="row">
-                    <div class="col-offset-md-6 col-md-6">
-                        <form id="editEventForm" method="post" class=" form-horizontal form-position form-hidden ">
-                            <div class="row">
-                                <div class="form-group ">
-                                    <label class="col-md-4 control-label col-sm-4">事件名:</label>
-                                    <div class="col-md-7 col-sm-12">
-                                        <%= user_event %>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class="col-md-4 control-label col-sm-4">添加标签:</label>
-                                    <div class="col-md-7 fakeinput col-sm-12">
-                                        <input type='text' id="tag" maxlength=8 name="eventTag" class="form-control tag">
-                                        <div id="hasAddTag">
-                                            <p>添加的标签:</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="col-md-offset-4 col-md-7 col-sm-12">
-                                        <button class="btn" type="submit">提交</button>
-                                    </div>
-                                </div>
-                                <!--隐藏的数据-->
-                                <input type="number" name="todoEventId" class="hidden-id ">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </script>
-        </div>
 
     </div>
 

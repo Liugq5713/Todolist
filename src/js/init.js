@@ -40,7 +40,7 @@ TODO.AJAX = {
                 //加载模板操作
                 if (data) {
                     console.dir(data);
-                    html = ejs.render(xhr.responseText, { arr: data, client: true });
+                    html = ejs.render(xhr.responseText, { arr: data });
                     document.querySelector(dom).innerHTML = html;
                 } else {
                     html = ejs.render(xhr.responseText);
