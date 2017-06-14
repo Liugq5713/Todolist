@@ -6,7 +6,8 @@ TODO.List.addList = function() {
     }
     console.log('add ');
     TODO.DB.add_event(arrangement);
-    TODO.AJAX.addModule('#panel-display', './src/gsit/panel.ejs', arrangement);
+    //TODO::这边重新刷新了所有的数据，要好好想想
+    TODO.Panel.event_all();
     clearInput();
 };
 

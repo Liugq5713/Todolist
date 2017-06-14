@@ -36,26 +36,7 @@ TODO.DB = {
             TODO.DB.event_all(TODO.AJAX.addModule, '#panel-display', './src/gsit/panel.ejs');
             user_id = TODO.DB.id_now();
             console.log(user_id);
-            // const todoShowSelect = document.querySelector('#todoShowWay');
-            // todoShowSelect.addEventListener('change', (e) => {
-            //     switch (todoShowSelect.value) {
-            //         case 'showDataDone':
-            //             TODO.DB.showDataDone();
-            //             break;
-            //         case 'showDataTodo':
-            //             TODO.DB.showDataTodo();
-            //             break;
-            //         case 'showData':
-            //             TODO.DB.showData();
-            //             break;
-            //         default:
-            //             TODO.DB.showData();
-            //             break;
-            //     }
-            // }, false);
-            // document.getElementById('delete').addEventListener('click', () => {
-            //     TODO.DB.delAllData();
-            // }, false);
+
 
         };
         request.onerror = function(e) {
@@ -72,7 +53,6 @@ TODO.DB = {
                 const requestDel = cursor.delete();
                 requestDel.onsuccess = function() {
                     console.log('del success');
-                    // TODO.DB.showData();
                 };
                 requestDel.onerror = function() {
                     console.log('del fail');
@@ -127,7 +107,8 @@ TODO.DB = {
         };
     },
     // 显示已经完成的数据
-    event_has_done: function() {
+    event_has_done: function(callback, dom, src) {
+        var arr = [];
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
 
@@ -136,28 +117,35 @@ TODO.DB = {
             const cursor = e.target.result;
             if (cursor) {
                 if (cursor.value.finished) {
+                    arr.push(cursor.value);
                     console.log(`${cursor.value}done`);
-                    TODO.Panel.refreshNode(cursor.value);
                 }
                 cursor.continue();
-            } else {}
+            } else {
+                callback.call(this, dom, src, arr);
+                console.log('done');
+            }
         };
     },
     // 显示未完成的数据
-    event_todo: function() {
+    event_todo: function(callback, dom, src) {
+        var arr = [];
+
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
-
         const range = IDBKeyRange.lowerBound(0, true);
         storeHander.openCursor(range, 'next').onsuccess = function(e) {
             const cursor = e.target.result;
             if (cursor) {
                 if (!cursor.value.finished) {
+                    arr.push(cursor.value);
                     console.log(`${cursor.value}todo`);
-                    TODO.Panel.refreshNode(cursor.value);
                 }
                 cursor.continue();
-            } else {}
+            } else {
+                callback.call(this, dom, src, arr);
+                console.log('done');
+            }
         };
     }
 };

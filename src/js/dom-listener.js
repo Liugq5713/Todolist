@@ -1,10 +1,11 @@
+//使用了父元素委托，监听panel上的发生的事件
 (function() {
-    const panel = document.querySelector('#showData');
+    const panel = document.querySelector('#panel-display');
     // 委托父元素进行监听
     panel.addEventListener('click', (e) => {
         // 获取对应事件的数据库编号，查询到对应的事件
         const id = Number(e.target.getAttribute('data-panelId'));
-        // console.log(e.target);
+        console.log(id);
 
         // 点击panel-body事件
         if (hasClass(e.target, 'panel-body')) {
@@ -37,7 +38,6 @@
         }
     }, false);
 
-
     // 实现hasclass方法
     function hasClass(obj, cls) {
         const obj_class = obj.className;
@@ -53,3 +53,27 @@
         return false;
     }
 })();
+//监听选项卡变动的事件
+(function(todoShowSelect) {
+    todoShowSelect.addEventListener('change', (e) => {
+        switch (todoShowSelect.value) {
+            case 'showDataDone':
+                TODO.Panel.event_has_done();
+                break;
+            case 'showDataTodo':
+                TODO.Panel.event_todo();
+                break;
+            case 'showData':
+                TODO.Panel.event_all();
+                break;
+            default:
+                TODO.Panel.event_all();
+                break;
+        }
+    }, false);
+
+})(document.querySelector('#todoShowWay'));
+//删除所有事件的按钮
+document.getElementById('delete').addEventListener('click', () => {
+    TODO.Panel.clear_all_event();
+}, false);
