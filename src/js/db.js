@@ -6,13 +6,13 @@ window.IDBCursor = window.IDBCursor || window || window.webkitIDBCursor || windo
 
 // 数据库初始化，数据库的函数应该只是返回数据而已
 // 但是因为是异步的，所以给数据库传入异步函数。
-TODO.DB = {
-    request: function() {
+TODO.DB = (function() {
+    var request = function() {
         return indexedDB.open('todolist', 1)
-    },
-    init: function() {
-        var request = this.request();
-        request.onupgradeneeded = function(e) {
+    };
+    var init = function() {
+        var req = request();
+        req.onupgradeneeded = function(e) {
             db = e.target.result;
             if (!db.objectStoreNames.contains('user')) {
                 // 在这里可以设置键值，也可以是auto
@@ -30,7 +30,7 @@ TODO.DB = {
             });
         };
         // 异步成功后才能获取到
-        request.onsuccess = function(e) {
+        req.onsuccess = function(e) {
             db = e.target.result;
             //加载数据的模板
             TODO.DB.event_all(TODO.AJAX.addModule, '#panel-display', './src/gsit/panel.ejs');
@@ -39,11 +39,11 @@ TODO.DB = {
 
 
         };
-        request.onerror = function(e) {
+        req.onerror = function(e) {
             console.log('failed');
         };
-    },
-    del_all_event: function() {
+    };
+    var del_all_event = function() {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         const range = IDBKeyRange.lowerBound(1);
@@ -60,9 +60,9 @@ TODO.DB = {
                 cursor.continue();
             } else {}
         };
-    },
+    };
     // 
-    add_event: function(data) {
+    var add_event = function(data) {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         const addOpt = storeHander.add(data);
@@ -72,9 +72,9 @@ TODO.DB = {
         addOpt.onsuccess = function() {
             console.log('add success');
         };
-    },
+    };
     // 获取到现在的ID值
-    id_now: function() {
+    var id_now = function() {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         const range = IDBKeyRange.lowerBound(0);
@@ -87,9 +87,9 @@ TODO.DB = {
                 console.log(user_id);
             }
         };
-    },
+    };
     // 展示数据
-    event_all: function(callback, dom, src) {
+    var event_all = function(callback, dom, src) {
         var arr = [];
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
@@ -105,9 +105,9 @@ TODO.DB = {
             }
 
         };
-    },
+    };
     // 显示已经完成的数据
-    event_has_done: function(callback, dom, src) {
+    var event_has_done = function(callback, dom, src) {
         var arr = [];
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
@@ -126,9 +126,9 @@ TODO.DB = {
                 console.log('done');
             }
         };
-    },
+    };
     // 显示未完成的数据
-    event_todo: function(callback, dom, src) {
+    var event_todo = function(callback, dom, src) {
         var arr = [];
 
         let transaction = db.transaction(['user'], 'readwrite'),
@@ -147,8 +147,18 @@ TODO.DB = {
                 console.log('done');
             }
         };
+    };
+    return {
+        init,
+        add_event,
+        id_now,
+        event_all,
+        event_has_done,
+        event_todo
     }
-};
+
+
+}());
 window.onload = function() {
     TODO.DB.init();
 };
