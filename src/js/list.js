@@ -1,6 +1,6 @@
 TODO.List = (function() {
     var add_list = function() {
-        const arrangement = TODO.List.get_Input_Event();
+        const arrangement = get_input_event();
         // 如果数据为空，那么直接退出
         if (arrangement.user_event == '') {
             return false;
@@ -11,7 +11,7 @@ TODO.List = (function() {
         TODO.Panel.event_all();
         clearInput();
     };
-    var get_Input_Event = function() {
+    var get_input_event = function() {
         const item = document.getElementById('item').value;
         const createDate = new Date();
         const date = createDate.Format('yyyy年MM月dd日 hh:mm:ss');
@@ -28,6 +28,5 @@ TODO.List = (function() {
 
     return {
         add_list,
-        get_Input_Event
     }
 }());

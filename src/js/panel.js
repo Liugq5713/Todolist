@@ -20,9 +20,10 @@ TODO.Panel = (function() {
     var event_all = function() {
         TODO.DB.event_all(TODO.AJAX.addModule, '#panel-display', './src/gsit/panel.ejs');
     };
+    del_btn
 
     // 点击panel-body事件
-    var panelBodyChange = function(id, panelBody, panel) {
+    var panel_body_change = function(id, panelBody, panel) {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         storeHander.get(id).onsuccess = function(e) {
@@ -49,7 +50,7 @@ TODO.Panel = (function() {
     };
 
     // 点击start按钮事件
-    var startpauseBtn = function(id, startBtn) {
+    var start_pauseBtn = function(id, startBtn) {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         storeHander.get(id).onsuccess = function(e) {
@@ -76,7 +77,7 @@ TODO.Panel = (function() {
     };
 
     // 点击del按钮的事件
-    var delBtn = function(id) {
+    var del_btn = function(id) {
         let transaction = db.transaction('user', 'readwrite'),
             storeHander = transaction.objectStore('user');
         // 删除操作,需要检验一下键的类型
@@ -86,12 +87,15 @@ TODO.Panel = (function() {
     };
 
     return {
+        //清除面板上所有的数据
         clear_all_event,
+        //展示不同的节点
         event_todo,
         event_has_done,
         event_all,
-        panelBodyChange,
-        startpauseBtn,
-        delBtn
+        //点击不同的按钮
+        panel_body_change,
+        start_pauseBtn,
+        del_btn
     }
 }());

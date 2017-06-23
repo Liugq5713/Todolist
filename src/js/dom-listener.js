@@ -11,17 +11,17 @@
         if (hasClass(e.target, 'panel-body')) {
             const panelBody = e.target;
             const panel = e.target.parentNode;
-            TODO.Panel.panelBodyChange(id, panelBody, panel);
+            TODO.Panel.panel_body_change(id, panelBody, panel);
         }
         // 点击start按钮事件
         if (hasClass(e.target, 'start-pause')) {
             const startBtn = e.target;
-            TODO.Panel.startpauseBtn(id, startBtn);
+            TODO.Panel.start_pauseBtn(id, startBtn);
         }
 
         // 点击del按钮事件
         if (hasClass(e.target, 'panelDel')) {
-            TODO.Panel.delBtn(id);
+            TODO.Panel.del_btn(id);
         }
 
         // 点击edit按钮事件

@@ -1,3 +1,4 @@
+//enter键和添加事项按钮绑定
 document.getElementById('item').addEventListener('keydown', (e) => {
     const keycode = e.keyCode;
     if (keycode == 13) {

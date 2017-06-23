@@ -151,14 +151,10 @@ TODO.DB = (function() {
     return {
         init,
         add_event,
+        del_all_event,
         id_now,
         event_all,
         event_has_done,
         event_todo
     }
-
-
 }());
-window.onload = function() {
-    TODO.DB.init();
-};
