@@ -196,5 +196,4 @@ TODO.Clock = (function() {
     return {
         flashMap
     }
-
 }());

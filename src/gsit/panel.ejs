@@ -1,5 +1,5 @@
 <% for(x in arr){ %>
-    <% if(arr[x].isfinished=='true'){%>
+    <% if(arr[x].finished){%>
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <%= arr[x].user_date %>
@@ -9,7 +9,6 @@
             </div>
             <div class="panel-body eventDone" data-panelId="<%= arr[x].id%>">
                 <%= arr[x].user_event %>
-                    <%= arr[x].user_event %>
             </div>
         </div>
 
@@ -23,7 +22,6 @@
                 </div>
                 <div class="panel-body eventTodo" data-panelId="<%= arr[x].id%>">
                     <%= arr[x].user_event%>
-
                 </div>
             </div>
 
