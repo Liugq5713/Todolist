@@ -21,23 +21,19 @@
         <div class="jumbotron">
             <h2>Todolist to master your life</h2>
             <input class="form-control " id="item" autofocus type="text " placeholder="请输入你要做的事情 ">
-            <div>
-                <button id="add" onclick="TODO.List.add_list()" class="btn btn-success ">添加事项</button>
-            </div>
+            <button id="add" onclick="TODO.List.add_list()" class="btn btn-success ">添加事项</button>
             <!--添加正在运行的事项面板-->
-            <div class="row show-info" id="info">
+            <div class="row hidden-info" id="info">
                 <div class="col-md-4 ">
                     <canvas id="myClock" class="show-clock" width="350" height="350"></canvas>
                 </div>
-                <div class="col-md-8  info-pos  ">
+                <div class="col-md-4 info-pos col-md-offset-2 ">
                     <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">事项名</li>
+                        <li class="list-group-item">创建时间</li>
+                        <li class="list-group-item">标签</li>
+                        <li class="list-group-item">番茄时间</li>
                     </ul>
-                    <!--<img src="./src/img/pomodoro.png">-->
                 </div>
             </div>
         </div>

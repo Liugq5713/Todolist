@@ -51,6 +51,7 @@ TODO.Panel = (function() {
 
     // 点击start按钮事件
     var start_pauseBtn = function(id, startBtn) {
+        var info = document.querySelector('#info');
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
         storeHander.get(id).onsuccess = function(e) {
@@ -60,17 +61,17 @@ TODO.Panel = (function() {
                 // 完成的情况
                 const myClock = document.querySelector('#myClock');
                 if (todoObj.started) {
-                    TODO.addClass(myClock, 'show-clock');
-                    TODO.addClass(startBtn, 'pause-img');
                     TODO.delClass(startBtn, 'start-img');
-                    TODO.delClass(myClock, 'no-clock');
+                    TODO.delClass(info, 'hidden-info');
+                    TODO.addClass(info, 'show-info');
+                    TODO.addClass(startBtn, 'pause-img');
                 }
                 // 未完成的情况
                 else {
-                    TODO.delClass(myClock, 'show-clock');
+                    TODO.delClass(info, 'show-info');
                     TODO.delClass(startBtn, 'pause-img');
                     TODO.addClass(startBtn, 'start-img');
-                    TODO.addClass(myClock, 'no-clock');
+                    TODO.addClass(info, 'hidden-info');
                 }
             };
         };
