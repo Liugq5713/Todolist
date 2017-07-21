@@ -38,6 +38,11 @@
         }
     }, false);
 
+
+    panel.addEventListener('dblclick', function(e) {
+        if (hasClass(e.target, 'panel-body'))
+            e.target.setAttribute('contenteditable', true);
+    }, false);
     // 实现hasclass方法
     function hasClass(obj, cls) {
         const obj_class = obj.className;
