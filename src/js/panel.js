@@ -20,7 +20,7 @@ TODO.Panel = (function() {
     var event_all = function() {
         TODO.DB.event_all(TODO.AJAX.addModule, '#panel-display', './src/gsit/panel.ejs');
     };
-    del_btn
+
 
     // 点击panel-body事件
     var panel_body_change = function(id, panelBody, panel) {

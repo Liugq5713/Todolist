@@ -8,7 +8,7 @@
         console.log(id);
 
         // 点击panel-body事件
-        if (hasClass(e.target, 'panel-body')) {
+        if (hasClass(e.target, 'panel-heading')) {
             const panelBody = e.target;
             const panel = e.target.parentNode;
             TODO.Panel.panel_body_change(id, panelBody, panel);
@@ -40,9 +40,22 @@
 
 
     panel.addEventListener('dblclick', function(e) {
-        if (hasClass(e.target, 'panel-body'))
+        if (hasClass(e.target, 'panel-body')) {
             e.target.setAttribute('contenteditable', true);
+            e.target.addEventListener('mouseout', function(e) {
+                if (hasClass(e.target, 'panel-body')) {
+                    e.target.setAttribute('contenteditable', false);
+                    const id = Number(e.target.getAttribute('data-panelId'));
+                    const event = e.target.innerText;
+                    TODO.DB.edit_event(event, id);
+                    //移除事件，这样这就是一个一次性的事件了
+                    e.target.removeEventListener('mouseout', arguments.callee);
+                };
+            }, false);
+        }
     }, false);
+
+
     // 实现hasclass方法
     function hasClass(obj, cls) {
         const obj_class = obj.className;
