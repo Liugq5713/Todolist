@@ -38,7 +38,7 @@
         }
     }, false);
 
-
+    //监听双击事件，使事件可以编辑
     panel.addEventListener('dblclick', function(e) {
         if (hasClass(e.target, 'panel-body')) {
             e.target.setAttribute('contenteditable', true);
@@ -91,7 +91,7 @@
     }, false);
 
 })(document.querySelector('#todoShowWay'));
-//删除所有事件的按钮
+//监听删除所有事件的按钮
 document.getElementById('delete').addEventListener('click', () => {
     TODO.Panel.clear_all_event();
 }, false);

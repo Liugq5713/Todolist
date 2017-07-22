@@ -21,7 +21,7 @@ TODO.List = (function() {
             user_event: item,
             finished: false,
             user_date: date,
-            srarted: false,
+            started: false,
         };
         return arrangement;
     };

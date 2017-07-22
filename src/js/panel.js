@@ -58,7 +58,7 @@ TODO.Panel = (function() {
             const todoObj = e.target.result;
             todoObj.started = !todoObj.started;
             storeHander.put(todoObj).onsuccess = function(e) {
-                // 完成的情况
+                // 开始的情况
                 const myClock = document.querySelector('#myClock');
                 if (todoObj.started) {
                     TODO.delClass(startBtn, 'start-img');
@@ -66,7 +66,7 @@ TODO.Panel = (function() {
                     TODO.addClass(info, 'show-info');
                     TODO.addClass(startBtn, 'pause-img');
                 }
-                // 未完成的情况
+                // 未开始的情况
                 else {
                     TODO.delClass(info, 'show-info');
                     TODO.delClass(startBtn, 'pause-img');

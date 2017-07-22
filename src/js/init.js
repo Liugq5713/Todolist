@@ -6,7 +6,8 @@ TODO = {
     tags: {},
     editForm: {},
     List: {},
-    Clock: {}
+    Clock: {},
+    Info: {}
 };
 
 TODO.addClass = function(domElement) {

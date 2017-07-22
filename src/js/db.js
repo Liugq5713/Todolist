@@ -77,13 +77,19 @@ TODO.DB = (function() {
     var edit_event = function(event_data, id_data) {
         let transaction = db.transaction(['user'], 'readwrite'),
             storeHander = transaction.objectStore('user');
-        const editOpt = storeHander.put({ user_event: event_data, id: id_data });
-        editOpt.onerror = function() {
-            console.log("edit failed");
-        };
-        editOpt.onsuccess = function() {
-            console.log('edit success');
-        };
+        storeHander.get(id_data).onsuccess = function(e) {
+            const todoObj = e.target.result;
+            todoObj.user_event = event_data;
+            const editOpt = storeHander.put(todoObj);
+            editOpt.onerror = function() {
+                console.log("edit failed");
+            };
+            editOpt.onsuccess = function() {
+                console.log('edit success');
+            };
+        }
+
+
     };
     // 获取到现在的ID值
     var id_now = function() {

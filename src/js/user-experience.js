@@ -22,7 +22,6 @@ function clearInput() {
 }
 
 // 添加回到顶部的按钮
-
 window.onscroll = function() { scrollFunction(); };
 
 function scrollFunction() {
