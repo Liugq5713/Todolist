@@ -16,7 +16,8 @@
         // 点击start按钮事件
         if (hasClass(e.target, 'start-pause')) {
             const startBtn = e.target;
-            TODO.Panel.start_pauseBtn(id, startBtn);
+            infoTransferStation.receiveMsg(id, startBtn);
+            //TODO.Panel.start_pauseBtn(id, startBtn);
         }
 
         // 点击del按钮事件

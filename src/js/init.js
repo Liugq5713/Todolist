@@ -10,6 +10,12 @@ TODO = {
     Info: {}
 };
 
+//对log函数精简，封装
+var log = function() {
+    // console.log.bind(console)
+    console.log.apply(this, arguments);
+};
+//添加类和删除类
 TODO.addClass = function(domElement) {
     var Styles = Array.prototype.slice.call(arguments, 1);
     for (var i in Styles) {
